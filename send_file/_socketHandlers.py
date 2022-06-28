@@ -52,6 +52,12 @@ class ServerHandler(SocketHandler):
         return client_socket, addr
 
     @classmethod
+    def get_my_ip(cls):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 7717))
+        return s.getsockname()[0]
+
+    @classmethod
     def receive_data(cls, client_socket: socket, buffer_size: int = 0):
         if not buffer_size:
             buffer_size = SocketHandler.BUFFER_SIZE

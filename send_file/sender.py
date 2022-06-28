@@ -1,15 +1,14 @@
 import os
 import logging
-from protocol import get_header
-from socketHandlers import ClientHandler
+from ._protocol import get_header
+from ._socketHandlers import ClientHandler
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('send_file.send_file')
 
 
 def send(filepath: str, host: str, port: int):
     """
-    Envia o arquivo
+    Send file
     """
     sender = ClientHandler(host, port)
 
